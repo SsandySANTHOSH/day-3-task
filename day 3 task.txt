@@ -1,0 +1,44 @@
+1.Compare two JSON values with same properties without order.
+
+  let obj1={name:"person 1",age:5};
+  let obj2={age:5,name:"person 1"};
+
+
+   var a = require('a');
+  a.deepEqual(obj1, obj2);
+
+
+2.use the rest countries,API url https://restcountries.com/v3.1/all,display flags in console
+
+
+  function printData(data) {
+    if(data.length > 0) {
+       for(let i= 0; i < data.length; i++) {
+           const { name = {},flag}  = data[i];
+           console.log(name.common,flag);
+       }
+    }
+  }
+
+  fetch('https://restcountries.com/v3.1/all')
+ .then((response) => response.json())
+ .then((res) => printData(res)); 
+
+
+
+3.use the same rest countries and print all the region,sub region and population.
+
+
+
+  function printData(data) {
+    if(data.length > 0) {
+       for(let i= 0; i < data.length; i++) {
+           const { name = {}, region = '', subregion = '', population = 0 }  = data[i];
+           console.log(name.common, region, subregion, population);
+       }
+    }
+  }
+
+   fetch('https://restcountries.com/v3.1/all')
+  .then((response) => response.json())
+  .then((res) => printData(res));
